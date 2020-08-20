@@ -40,6 +40,12 @@ const startBtn = {
 }
 // control game
 
+document.addEventListener("keydown",moveUp);
+
+function moveUp(){
+    
+}
+
 cvs.addEventListener("click",function(evt){
     switch(state.current){
         case state.getReady:
@@ -151,7 +157,7 @@ const bird = {
     },
 
     flap: function(){
-        this.speed -= this.jum;
+        this.speed = - this.jum;
     },
 
     update: function(){
@@ -163,7 +169,7 @@ const bird = {
         this.frame = this.frame % this.animation.length;
         if (state.current == state.getReady){
             this.y = 150; // reset positon
-            this.rotation = 0 *DEGREE;
+            this.rotation = 0 * DEGREE;
         }else{
             this.speed += this.gravity;
             this.y += this.speed;
@@ -299,7 +305,7 @@ const pipes = {
         this.position = [];
     }
 }
-// socre
+// score
 const score = {
     best : parseInt(localStorage.getItem("best")) || 0,
     value : 0,
@@ -315,11 +321,11 @@ const score = {
         }else if (state.current == state.over){
             // sore
             ctx.font = "25px Teko";
-            ctx.fillText(this.value,255,186);
-            ctx.strokeText(this.value,255,186);
+            ctx.fillText(this.value,225,186);
+            ctx.strokeText(this.value,225,186);
             // best score
-            ctx.fillText(this.best,255,228);
-            ctx.strokeText(this.best,255,228);
+            ctx.fillText(this.best,225,228);
+            ctx.strokeText(this.best,225,228);
         }
     },
     reset : function(){
